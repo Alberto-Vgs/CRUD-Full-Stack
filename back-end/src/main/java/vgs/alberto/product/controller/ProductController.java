@@ -19,6 +19,12 @@ public class ProductController {
         return productService.saveProduct(product);
     }
 
+    @PostMapping("/products")
+    public List<Product> saveProducts(@Validated @RequestBody List<Product> product)
+    {
+        return productService.saveProducts(product);
+    }
+
     @GetMapping("/product")
     public List<Product> fetchProductList()
     {

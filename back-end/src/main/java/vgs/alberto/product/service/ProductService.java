@@ -8,6 +8,8 @@ import java.util.Optional;
 public interface ProductService {
     Product saveProduct(Product product);
 
+    List<Product> saveProducts(List<Product> product);
+
     List<Product> fetchProductList();
 
     Product getProduct(Long productId);

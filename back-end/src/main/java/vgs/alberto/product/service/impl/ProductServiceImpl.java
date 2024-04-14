@@ -23,6 +23,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> saveProducts(List<Product> products) {
+        return (List<Product>) productRepository.saveAll(products);
+    }
+
+    @Override
     public List<Product> fetchProductList() {
         return (List<Product>) productRepository.findAll();
     }

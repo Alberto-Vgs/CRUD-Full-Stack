@@ -1,9 +1,6 @@
 package vgs.alberto.product.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,10 +12,29 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productId;
+
+    @Column(nullable = false, unique = true)
     private String productName;
+
     private String productPrice;
+
     private Long productQuantity;
+
+    @PrePersist
+    public void setDefaultPrice() {
+        if (productPrice == null) {
+            productPrice = "0.0";
+        }
+    }
+
+    @PrePersist
+    public void setDefaultQuantity() {
+        if (productQuantity == null) {
+            productQuantity = 0L;
+        }
+    }
 }
