@@ -26,15 +26,9 @@ public class Product {
 
     @PrePersist
     public void setDefaultPrice() {
-        if (productPrice == null) {
-            productPrice = "0.0";
-        }
+        if (productPrice == null) productPrice = "0.0";
+
+        if (productQuantity == null) productQuantity = 0L;
     }
 
-    @PrePersist
-    public void setDefaultQuantity() {
-        if (productQuantity == null) {
-            productQuantity = 0L;
-        }
-    }
 }
