@@ -5,11 +5,11 @@ import vgs.alberto.product.entity.Product;
 import java.util.List;
 
 public interface ProductService {
-    Product saveDepartment(Product department);
+    Product saveProduct(Product product);
 
-    List<Product> fetchDepartmentList();
+    List<Product> fetchProductList();
 
-    Product updateDepartment(Product department, Long departmentId);
+    Product updateProduct(Product product, Long productId);
 
-    void deleteDepartmentById(Long departmentId);
+    void deleteProductById(Long productId);
 }
