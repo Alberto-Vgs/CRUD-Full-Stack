@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import vgs.alberto.product.entity.Product;
 
 @Repository
-public class ProductRepository extends CrudRepository<Product, Long> {
+public interface ProductRepository extends CrudRepository<Product, Long> {
 }

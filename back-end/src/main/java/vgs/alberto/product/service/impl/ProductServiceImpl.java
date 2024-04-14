@@ -28,19 +28,24 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product updateProduct(Product product, Long productId) {
-        Product proDB = productRepository.findById(productId);
+        Optional<Product> proDB = productRepository.findById(productId);
 
-        if (Objects.nonNull(product.getProductName()) && !"".equalsIgnoreCase(product.getProductName())){
-            proDB.setProductName(product.getProductName());
-        }
-        if (Objects.nonNull(product.getProductPrice()) && !"".equalsIgnoreCase(product.getProductPrice())){
-            proDB.setProductPrice(product.getProductPrice());
-        }
-        if (Objects.nonNull(product.getProductQuantity())){
-            proDB.setProductQuantity(product.getProductQuantity());
-        }
+        if (proDB.isPresent()) {
+            Product savePro = proDB.get();
 
-        return  productRepository.save(proDB);
+            if (Objects.nonNull(product.getProductName()) && !"".equalsIgnoreCase(product.getProductName()))
+                savePro.setProductName(product.getProductName());
+
+            if (Objects.nonNull(product.getProductPrice()) && !"".equalsIgnoreCase(product.getProductPrice()))
+                savePro.setProductPrice(product.getProductPrice());
+
+            if (Objects.nonNull(product.getProductQuantity()))
+                savePro.setProductQuantity(product.getProductQuantity());
+
+            return  productRepository.save(savePro);
+        } else {
+            throw new RuntimeException("Product not found for id: " + productId);
+        }
     }
 
     @Override
