@@ -6,6 +6,7 @@ import vgs.alberto.product.entity.Product;
 import vgs.alberto.product.repository.ProductRepository;
 import vgs.alberto.product.service.ProductService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -53,6 +54,14 @@ public class ProductServiceImpl implements ProductService {
         } else {
             throw new RuntimeException("Product not found for id: " + productId);
         }
+    }
+
+    public List<Product> updateProducts(List<Product> products){
+        List<Product> productList = new ArrayList<>();
+        products.forEach(product -> productList.add(
+                updateProduct(product, product.getProductId())
+        ));
+        return productList;
     }
 
     @Override
