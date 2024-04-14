@@ -27,6 +27,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product getProduct(Long productId) {
+        Optional<Product> proFond = productRepository.findById(productId);
+        if (proFond.isPresent()) return proFond.get();
+        else throw new RuntimeException("Product not found for id: " + productId);
+    }
+
+    @Override
     public Product updateProduct(Product product, Long productId) {
         Optional<Product> proDB = productRepository.findById(productId);
 
