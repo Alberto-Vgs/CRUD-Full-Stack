@@ -5,6 +5,13 @@ Prueba técnica de programador full-stack usando spring-boot para el back-end y 
 
 Este documento detalla los servicios disponibles para la gestión de productos en la aplicación.
 
+## Credenciales de Consumo
+
+Para acceder a los endpoints de la API, se requieren credenciales de autenticación básica. A continuación se detallan las credenciales necesarias:
+
+- **Username:** alberto_vgs
+- **Password:** c8be15de-4488-4490-9dc6-fab3f91435c6
+
 ## Guardar Producto
 
 Guarda un nuevo producto en la base de datos.
