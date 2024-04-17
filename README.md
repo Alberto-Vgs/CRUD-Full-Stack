@@ -12,6 +12,11 @@ Para acceder a los endpoints de la API, se requieren credenciales de autenticaci
 - **Username:** alberto_vgs
 - **Password:** c8be15de-4488-4490-9dc6-fab3f91435c6
 
+
+## Path de consumo
+
+`http://localhost:8080/back-end/api/v1`
+
 ## Guardar Producto
 
 Guarda un nuevo producto en la base de datos.
