@@ -116,3 +116,14 @@ Elimina un producto por su ID.
 - **Parámetros de ruta:** `id` - ID del producto a eliminar.
 - **Respuesta:** Retorna un objeto `ResponseDTO` con el código de estado HTTP 204 (NO CONTENT) indicando que el producto ha sido eliminado exitosamente.
 
+## Contribuciones
+
+¡Se agradecen las contribuciones! Si deseas contribuir a este proyecto, por favor sigue estos pasos:
+
+1. Haz un fork del repositorio.
+2. Crea una nueva rama (`git checkout -b feature/nueva-caracteristica`).
+3. Realiza tus cambios y haz commit de ellos (`git commit -am 'Agrega una nueva característica'`).
+4. Haz push de la rama (`git push origin feature/nueva-caracteristica`).
+5. Abre un pull request.
+
+¡Esperamos tus contribuciones! ¡Gracias por tu ayuda!
