@@ -5,6 +5,21 @@ Prueba técnica de programador full-stack usando spring-boot para el back-end y 
 
 Este documento detalla los servicios disponibles para la gestión de productos en la aplicación.
 
+# Product API
+
+This is a sample project for a Spring Boot REST API for managing products.
+
+## Requirements
+
+- Java 17
+- Spring Boot 3.2.4
+- Spring Boot Starter Data JPA
+- Spring Boot Starter Web
+- H2 Database
+- Lombok
+- Spring Boot Starter Test
+- Spring Boot Starter Security
+
 ## Credenciales de Consumo
 
 Para acceder a los endpoints de la API, se requieren credenciales de autenticación básica. A continuación se detallan las credenciales necesarias:
