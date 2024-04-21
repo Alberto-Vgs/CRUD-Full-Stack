@@ -1,0 +1,14 @@
+# Archivos de compilación
+target/
+
+# Archivos de configuración de IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+*.log
+
+# Archivos de compilación de Maven
+mvnw
+mvnw.cmd
+.mvn/
