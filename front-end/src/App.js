@@ -1,10 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
+import Webpages from './webpages';
 
 function App() {
   return (
-    <h1>Hello World</h1>
+    <div>
+      <Webpages />
+    </div>
   );
 }
-
 export default App;
