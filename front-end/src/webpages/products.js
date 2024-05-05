@@ -1,6 +1,6 @@
-import React, { useState, useEffect }  from 'react';
-const Product = () => {
+import React, { useState, useEffect } from 'react';
 
+const Product = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [users, setUsers] = useState([]);
@@ -18,28 +18,26 @@ const Product = () => {
                     setError(error);
                 }
             )
-      }, [])
+    }, [])
 
-      if (error) {
+    if (error) {
         return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
         return <div>Loading...</div>;
     } else {
         return (
-            <ul>
-                {users.map(user => (
-                <li key={user.id}>
-                    {user.name} 
-                </li>
-                ))}
-            </ul>
+            <div>
+                <h1>Product Lists</h1>
+                <ul>
+                    {users.map(user => (
+                        <li>
+                            {user.name}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         );
     }
-return(
-        <div>
-            <h1>Product Lists</h1>
-            <p>{users}</p>
-        </div>
-    );
 }
+
 export default Product;

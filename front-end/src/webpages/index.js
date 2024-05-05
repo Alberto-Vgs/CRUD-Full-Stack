@@ -8,11 +8,7 @@ import {
 import Product from './products';
 const Webpages = () => {
     return(
-        <Router>
-            <Routes>
-                <Route exact path="/" component= {Product} />
-            </Routes>
-        </Router>
+        <Product/>
     );
 };
 export default Webpages;
