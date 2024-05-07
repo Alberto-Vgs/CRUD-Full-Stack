@@ -4,9 +4,8 @@ import Api from '../service/config';
 const Product = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [products, setProducts] = useState([]);
     const api = Api()
-
-    const products =null;
 
     // Configurar las opciones de la solicitud fetch
     const requestOptions = {
@@ -23,8 +22,7 @@ const Product = () => {
             .then(
                 (data) => {
                     setIsLoaded(true);
-                    products = data;
-                    console.log(data)
+                    setProducts(data.data);
                 },
                 (error) => {
                     setIsLoaded(true);
@@ -42,7 +40,11 @@ const Product = () => {
             <div>
                 <h1>Product Lists</h1>
                 <ul>
-                    {/* {products} */}
+                    {products.map(product => (
+                        <li key={product.productId}>
+                            {product.productName} 
+                        </li>
+                    ))}
                 </ul>
             </div>
         );
