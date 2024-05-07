@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*") // Permite solicitudes desde cualquier origen
 public class ProductController {
     @Autowired
     private ProductService productService;

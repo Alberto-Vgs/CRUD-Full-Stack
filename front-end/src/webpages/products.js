@@ -1,45 +1,54 @@
-import React, { useState, useEffect }  from 'react';
-const Product = () => {
+import React, { useState, useEffect } from 'react';
+import Api from '../service/config';
 
+const Product = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [users, setUsers] = useState([]);
+    const [products, setProducts] = useState([]);
+    const api = Api()
+
+    // Configurar las opciones de la solicitud fetch
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'Authorization': `Basic ${api.token}`,
+            'Content-Type': 'application/json'
+        }
+    };
 
     useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/users/")
+        fetch(api.apiUrl + "product", requestOptions)
             .then(res => res.json())
             .then(
                 (data) => {
                     setIsLoaded(true);
-                    setUsers(data);
+                    setProducts(data.data);
                 },
                 (error) => {
                     setIsLoaded(true);
                     setError(error);
                 }
             )
-      }, [])
-
-      if (error) {
+        }, [])
+        
+    if (error) {
         return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
         return <div>Loading...</div>;
     } else {
         return (
-            <ul>
-                {users.map(user => (
-                <li key={user.id}>
-                    {user.name} 
-                </li>
-                ))}
-            </ul>
+            <div>
+                <h1>Product Lists</h1>
+                <ul>
+                    {products.map(product => (
+                        <li key={product.productId}>
+                            {product.productName} 
+                        </li>
+                    ))}
+                </ul>
+            </div>
         );
     }
-return(
-        <div>
-            <h1>Product Lists</h1>
-            <p>{users}</p>
-        </div>
-    );
 }
+
 export default Product;
