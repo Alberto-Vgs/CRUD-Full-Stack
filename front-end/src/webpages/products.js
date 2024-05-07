@@ -4,8 +4,9 @@ import Api from '../service/config';
 const Product = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [users, setUsers] = useState([]);
     const api = Api()
+
+    const products =null;
 
     // Configurar las opciones de la solicitud fetch
     const requestOptions = {
@@ -22,15 +23,16 @@ const Product = () => {
             .then(
                 (data) => {
                     setIsLoaded(true);
-                    setUsers(data);
+                    products = data;
+                    console.log(data)
                 },
                 (error) => {
                     setIsLoaded(true);
                     setError(error);
                 }
             )
-    }, [])
-
+        }, [])
+        
     if (error) {
         return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -40,7 +42,7 @@ const Product = () => {
             <div>
                 <h1>Product Lists</h1>
                 <ul>
-                    
+                    {/* {products} */}
                 </ul>
             </div>
         );
