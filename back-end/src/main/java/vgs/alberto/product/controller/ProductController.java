@@ -18,66 +18,88 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    private List<Product> productList(List<ProductDTO> productsDTO){
-        List<Product> productList = new ArrayList<>();
-        productsDTO.forEach(product -> productList.add(ProductMapper.mapToProduct(product)));
-        return productList;
-    }
-
     @PostMapping("/product")
-    public ResponseDTO<Product> saveProduct(@Validated @RequestBody ProductDTO productDTO)
+    public ResponseDTO<ProductDTO> saveProduct(@Validated @RequestBody ProductDTO productDTO)
     {
-        return new ResponseDTO<Product>(
-                201, "CREATED", productService.saveProduct(ProductMapper.mapToProduct(productDTO))
+        return new ResponseDTO<ProductDTO>(
+                201,
+                "CREATED",
+                ProductMapper.mapToDTO(productService.saveProduct(
+                            ProductMapper.mapToProduct(productDTO)
+                    ))
         );
     }
 
     @PostMapping("/products")
-    public ResponseDTO<List<Product>> saveProducts(@Validated @RequestBody List<ProductDTO> productsDTO)
+    public ResponseDTO<List<ProductDTO>> saveProducts(@Validated @RequestBody List<ProductDTO> productsDTO)
     {
-        return new ResponseDTO<List<Product>>(
-                201, "CREATED", productService.saveProducts(productList(productsDTO))
+        return new ResponseDTO<List<ProductDTO>>(
+                201,
+                "CREATED",
+                ProductMapper.dtoList(
+                        productService.saveProducts(
+                                ProductMapper.productList(productsDTO)
+                        )
+                )
         );
     }
 
     @GetMapping("/product")
-    public ResponseDTO<List<Product>> fetchProductList()
+    public ResponseDTO<List<ProductDTO>> fetchProductList()
     {
-        return new ResponseDTO<List<Product>>(
-                200, "FOUND", productService.fetchProductList()
+        return new ResponseDTO<List<ProductDTO>>(
+                200,
+                "FOUND",
+                ProductMapper.dtoList(
+                        productService.fetchProductList()
+                )
         );
     }
 
     @GetMapping("/product/{id}")
-    public ResponseDTO<Product> getProduct(@PathVariable("id") Long id)
+    public ResponseDTO<ProductDTO> getProduct(@PathVariable("id") Long id)
     {
-        return new ResponseDTO<Product>(
-                200, "FOUND", productService.getProduct(id)
+        return new ResponseDTO<ProductDTO>(
+                200,
+                "FOUND",
+                ProductMapper.mapToDTO(
+                        productService.getProduct(id)
+                )
         );
     }
 
     @PutMapping("/product/{id}")
-    public ResponseDTO<Product> updateProduct(@RequestBody Product product, @PathVariable("id") Long productId)
+    public ResponseDTO<ProductDTO> updateProduct(@RequestBody Product product, @PathVariable("id") Long productId)
     {
-        return new ResponseDTO<Product>(
-                200, "UPDATED", productService.updateProduct(product, productId)
+        return new ResponseDTO<ProductDTO>(
+                200,
+                "UPDATED",
+                ProductMapper.mapToDTO(
+                        productService.updateProduct(product, productId)
+                )
         );
     }
 
     @PutMapping("/product")
-    public ResponseDTO<List<Product>> updateProducts(@RequestBody List<ProductDTO> productsDTO)
+    public ResponseDTO<List<ProductDTO>> updateProducts(@RequestBody List<ProductDTO> productsDTO)
     {
-        return new ResponseDTO<List<Product>>(
-                200, "UPDATED", productService.updateProducts(productList(productsDTO))
+        return new ResponseDTO<List<ProductDTO>>(
+                200,
+                "UPDATED",
+                ProductMapper.dtoList(
+                        productService.updateProducts(ProductMapper.productList(productsDTO))
+                )
         );
     }
 
     @DeleteMapping("/product/{id}")
-    public ResponseDTO<Product> deleteProductById(@PathVariable("id") Long productId)
+    public ResponseDTO<ProductDTO> deleteProductById(@PathVariable("id") Long productId)
     {
         productService.deleteProductById(productId);
-        return new ResponseDTO<Product>(
-                204, "DELETED", null
+        return new ResponseDTO<ProductDTO>(
+                204,
+                "DELETED",
+                null
         );
     }
 }
