@@ -24,11 +24,15 @@ public class Product {
 
     private Long productQuantity;
 
+    private Boolean productStatus;
+
     @PrePersist
     public void setDefaultPrice() {
         if (productPrice == null) productPrice = "0.0";
 
         if (productQuantity == null) productQuantity = 0L;
+
+        if (productStatus == null) productStatus = true;
     }
 
 }
